@@ -54,6 +54,8 @@ interface AppContextType {
   setIsCheckoutModalOpen: (open: boolean) => void;
   checkoutProduct: Product | null;
   setCheckoutProduct: (product: Product | null) => void;
+  isExportModalOpen: boolean;
+  setIsExportModalOpen: (open: boolean) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -106,6 +108,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [isSecurityModalOpen, setIsSecurityModalOpen] = useState(false);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [checkoutProduct, setCheckoutProduct] = useState<Product | null>(null);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   // Sync to localStorage
   useEffect(() => {
@@ -437,7 +440,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         isCheckoutModalOpen,
         setIsCheckoutModalOpen,
         checkoutProduct,
-        setCheckoutProduct
+        setCheckoutProduct,
+        isExportModalOpen,
+        setIsExportModalOpen
       }}
     >
       {children}

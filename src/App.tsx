@@ -10,10 +10,11 @@ import { OrdersView } from './components/OrdersView';
 import { LiveChatWidget } from './components/LiveChatWidget';
 import { CheckoutModal } from './components/CheckoutModal';
 import { SecurityMatrixModal } from './components/SecurityMatrixModal';
+import { ExportFolderModal } from './components/ExportFolderModal';
 import { Footer } from './components/Footer';
 
 const AppContent: React.FC = () => {
-  const { currentView, currentUser, selectedPartnerId } = useApp();
+  const { currentView, currentUser, selectedPartnerId, isExportModalOpen, setIsExportModalOpen } = useApp();
 
   return (
     <div className="min-h-screen bg-[#0c0d0e] flex flex-col font-sans selection:bg-[#c5a059] selection:text-black">
@@ -44,6 +45,7 @@ const AppContent: React.FC = () => {
       <LiveChatWidget />
       <CheckoutModal />
       <SecurityMatrixModal />
+      <ExportFolderModal isOpen={isExportModalOpen} onClose={() => setIsExportModalOpen(false)} />
     </div>
   );
 };

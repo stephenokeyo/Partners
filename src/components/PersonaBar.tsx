@@ -1,9 +1,9 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { Shield, ShieldAlert, UserCheck, Key, Lock, Sparkles } from 'lucide-react';
+import { Shield, ShieldAlert, UserCheck, Key, Lock, Sparkles, Download } from 'lucide-react';
 
 export const PersonaBar: React.FC = () => {
-  const { currentUser, allUsers, switchUser, setIsSecurityModalOpen, setIsLoginModalOpen } = useApp();
+  const { currentUser, allUsers, switchUser, setIsSecurityModalOpen, setIsExportModalOpen } = useApp();
 
   return (
     <div className="bg-[#121417] border-b border-white/10 px-4 py-2 text-xs">
@@ -69,6 +69,16 @@ export const PersonaBar: React.FC = () => {
           >
             <Shield className="w-3.5 h-3.5 text-amber-400" />
             <span>RBAC & Privacy Matrix</span>
+          </button>
+
+          {/* Direct Workspace Clone/Download Button */}
+          <button
+            onClick={() => setIsExportModalOpen(true)}
+            className="px-2.5 py-1 bg-[#c5a059]/15 hover:bg-[#c5a059]/25 text-[#c5a059] border border-[#c5a059]/40 rounded text-[11px] font-medium flex items-center gap-1 transition-colors whitespace-nowrap cursor-pointer"
+            title="Download workspace directly as a local folder or zip"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Download as Folder</span>
           </button>
         </div>
       </div>
